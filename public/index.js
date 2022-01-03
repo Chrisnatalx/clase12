@@ -9,17 +9,19 @@ function render(data) {
   data.forEach((info) => {
     $("#messages").prepend(`
         <div>
-        <strong${info.author}</strong>
+        <strong>${info.author} : </strong>
+        [${info.time}] 
         <em>${info.text}</em>
         </div>`);
   });
 }
 
 $("#myForm").submit((e) => {
-  e.preventDefault(e);
+  e.preventDefault();
+
   const mensaje = {
-    author: $("#username").val(),
-    text: $("#texto").val(),
+    author: $("#email").val(),
+    text: $("#text").val(),
   };
 
   socket.emit("new-message", mensaje);

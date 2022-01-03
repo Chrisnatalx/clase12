@@ -4,6 +4,8 @@ const { Router } = express;
 const { Server: HttpServer } = require("http");
 const { Server: IOServer } = require("socket.io");
 const { dirname } = require("path");
+const { sendFile } = require("express/lib/response");
+const { SocketAddress } = require("net");
 
 const app = express();
 const httpServer = new HttpServer(app);
@@ -67,21 +69,23 @@ app.get("/list", (req, res) => {
 
 const messages = [
   {
-    author: "Pablo",
-    text: "desfusa",
+    author: "Christian",
+    text: "En que puedo ayudarte?",
   },
 ];
 
 app.use(express.static("./public"));
 app.get("/chat", (req, res) => {
-  res.sendFile("index.html", { root: __dirname });
+  res.sendFile("./public/index.html", { root: __dirname });
 });
 
 io.on("connection", (socket) => {
   console.log("new user");
   socket.emit("messages", messages);
-});
-io.on("new-message", (data) => {
-  messages.push(data);
-  io.sockets.emit("messages", [data]);
+
+  socket.on("new-message", (data) => {
+    data.time = new Date().toLocaleTimeString();
+    messages.push(data);
+    io.sockets.emit("messages", [data]);
+  });
 });
