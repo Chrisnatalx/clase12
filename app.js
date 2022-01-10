@@ -20,12 +20,16 @@ app.use(
 app.set("views", "./views");
 app.set("view engine", "ejs");
 
+const routerDos = Router();
 const router = Router();
 const libreria = new Libreria();
 
 router.get("/", (req, res) => {
   return res.json(libreria.list);
 });
+// routerDos.get("/", (req, res) => {
+//   return res.json(libreria.list);
+// });
 
 router.get("/:id", (req, res) => {
   try {
@@ -41,6 +45,13 @@ router.post("/", (req, res) => {
   libreria.insert(obj);
   return res.redirect("/list");
 });
+
+routerDos.post("/", (req, res) => {
+  let obj = req.body;
+  libreria.insert(obj);
+  return res.redirect("/api/carrito");
+});
+
 router.put("/:id", (req, res) => {
   let obj = req.body;
   let id = req.params.id;
@@ -53,6 +64,7 @@ router.delete("/:id", (req, res) => {
 });
 
 app.use("/api/productos", router);
+app.use("/api/carrito", routerDos);
 
 httpServer.listen(3000);
 app.get("/", (req, res) => {

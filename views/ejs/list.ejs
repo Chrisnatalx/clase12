@@ -27,6 +27,11 @@
               <td><%= libro.page%></td>
               <td><%= libro.author%></td>
               <td><img src="<%= libro.thumbnail%>" width="100px" height="150px"></td>
+              <td>
+                <a href="/api/carrito">
+                  <button  action="/api/carrito" method="post" class="btn btn-primary">Añadir al carrito</button>
+                </a>
+              </td>
             </tr>
             <%}) %>
             <%} %>
