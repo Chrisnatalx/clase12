@@ -3,24 +3,32 @@
     "title": "La vuelta al mundo en 80 días",
     "author": "Julio Verne",
     "page": 120,
-    "thumbnail": "https://m.media-amazon.com/images/I/51c5w6NcNYL.jpg"
+    "thumbnail": "https://m.media-amazon.com/images/I/51c5w6NcNYL.jpg",
+    "price": 1900,
+    "stock": 5
   },
   {
     "title": "Harry Potter",
     "author": "J.K Rowling",
     "page": 500,
-    "thumbnail": "https://http2.mlstatic.com/D_NQ_NP_722711-MLA42906730908_072020-O.jpg"
+    "thumbnail": "https://http2.mlstatic.com/D_NQ_NP_722711-MLA42906730908_072020-O.jpg",
+    "price": 2500,
+    "stock": 5
   },
   {
     "title": "Mi planta naranja lima",
     "author": "Jose Mauro de Vasconcelos",
     "page": 238,
-    "thumbnail": "https://http2.mlstatic.com/D_NQ_NP_303811-MLA20649753532_032016-O.jpg"
+    "thumbnail": "https://http2.mlstatic.com/D_NQ_NP_303811-MLA20649753532_032016-O.jpg",
+    "price": 1300,
+    "stock": 5
   },
   {
     "title": "El psicoanalista",
     "author": "John Katzenbach",
     "page": 500,
-    "thumbnail": "https://i0.wp.com/leerlotodo.com/wp-content/uploads/2014/12/El-psicoanalista-por-John-Karzenbach-Leerlo-Todo-pdf.jpg"
+    "thumbnail": "https://i0.wp.com/leerlotodo.com/wp-content/uploads/2014/12/El-psicoanalista-por-John-Karzenbach-Leerlo-Todo-pdf.jpg",
+    "price": 2900,
+    "stock": 5
   }
 ]

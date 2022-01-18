@@ -24,12 +24,10 @@ const routerDos = Router();
 const router = Router();
 const libreria = new Libreria();
 
+// logica de productos
 router.get("/", (req, res) => {
   return res.json(libreria.list);
 });
-// routerDos.get("/", (req, res) => {
-//   return res.json(libreria.list);
-// });
 
 router.get("/:id", (req, res) => {
   try {
@@ -46,12 +44,6 @@ router.post("/", (req, res) => {
   return res.redirect("/list");
 });
 
-routerDos.post("/", (req, res) => {
-  let obj = req.body;
-  libreria.insert(obj);
-  return res.redirect("/api/carrito");
-});
-
 router.put("/:id", (req, res) => {
   let obj = req.body;
   let id = req.params.id;
@@ -61,6 +53,23 @@ router.delete("/:id", (req, res) => {
   let obj = req.body;
   let id = req.params.id;
   return res.json(libreria.delete(id, obj));
+});
+//logica de carrito
+routerDos.post("/", (req, res) => {
+  let obj = req.body;
+  libreria.insert(obj);
+  return res.render("ejs/carrito", {
+    list: libreria.list,
+  });
+});
+
+app.get("/api/carrito", (req, res) => {
+  try {
+    let id = req.params.id;
+    return res.json(libreria.find(id));
+  } catch (err) {
+    res.json(`Producto no encontrado${err}`);
+  }
 });
 
 app.use("/api/productos", router);
